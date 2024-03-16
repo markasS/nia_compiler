@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+    <numbers hasIntegers="true" hasDecimals="true">
+        <lexem>
+            <name>Skaičius</name>
+            <uid>$number</uid>
+        </lexem>
+    </numbers>
+    <symbols>
+        <lexem>
+            <value>=</value>
+            <name>Priskirimo Operacija</name>
+            <uid>$assign</uid>
+        </lexem>
+		<lexem>
+            <value>==</value>
+            <name>Lygybės palyginimo opratorius</name>
+            <uid>$dEq</uid>
+        </lexem>
+        <lexem>
+            <value>;</value>
+            <name>Sakinio pabaiga</name>
+            <uid>$semicolon</uid>
+        </lexem>
+        <lexem>
+            <value>></value>
+            <name>Daugiau palyginimo operatorius</name>
+            <uid>$greaterThan</uid>
+        </lexem>
+        <lexem>
+            <value>>=</value>
+            <name>Daugiau arba lygu palyginimo operatorius</name>
+            <uid>$greaterThanOrEq</uid>
+        </lexem>
+        <lexem>
+            <value>&lt;</value>
+            <name>Mažiau palyginimo operatorius</name>
+            <uid>$lessThan</uid>
+        </lexem>
+        <lexem>
+            <value>&lt;=</value>
+            <name>Mažiau arba lygu palyginimo operatorius</name>
+            <uid>$lessThanOrEq</uid>
+        </lexem>
+        <lexem>
+            <value>!</value>
+            <name>Neigimas</name>
+            <uid>$exclMark</uid>
+        </lexem>
+		<lexem>
+            <name>Nelygybės palyginimo operatorius</name>
+            <value>!=</value>
+            <uid>$exclEq</uid>
+        </lexem>
+        <lexem>
+            <value>&amp;&amp;</value>
+            <name>Konjunkcija</name>
+            <uid>$dAmp</uid>
+        </lexem>
+        <lexem>
+            <value>||</value>
+            <name>Disjunkcija</name>
+            <uid>$dPipe</uid>
+        </lexem>
+        <lexem>
+            <value>+</value>
+            <name>Suma aritmetinė operacija</name>
+            <uid>$plus</uid>
+        </lexem>
+        <lexem>
+            <value>-</value>
+            <name>Atimtis aritmetinė operacija</name>
+            <uid>$minus</uid>
+        </lexem>
+        <lexem>
+            <value>*</value>
+            <name>Daugyba aritmetinė operacija</name>
+            <uid>$asterisk</uid>
+        </lexem>
+        <lexem>
+            <value>{</value>
+            <name>Kodo bloko pradžia</name>
+            <uid>$lPar</uid>
+        </lexem>
+        <lexem>
+            <value>}</value>
+            <name>Kodo bloko pabaiga</name>
+            <uid>$rBrace</uid>
+        </lexem>
+        <lexem>
+            <value>{</value>
+            <name>Kodo bloko pabaiga</name>
+            <uid>$lBrace</uid>
+        </lexem>
+        <lexem>
+            <value>(</value>
+            <name>Sąlygos pradžia</name>
+            <uid>$lPar</uid>
+        </lexem>
+        <lexem>
+            <value>)</value>
+            <name>Sąlygos pabaiga</name>
+            <uid>$rPar</uid>
+        </lexem>
+        <lexem>
+            <value>,</value>
+            <name>Funkcijos parametrų skirtukas</name>
+            <uid>$comma</uid>
+        </lexem>
+    </symbols>
+    <keywords>
+		<lexem>
+			<value>ERROR</value>
+			<name>Identifikatorius</name>
+			<uid>$id</uid>
+		</lexem>
+        <lexem>
+            <value>ЧИТАТЬ</value>
+            <name>Išvedimo operacija</name>
+            <uid>$read</uid>
+        </lexem>
+        <lexem>
+            <value>ПИСАТЬ</value>
+            <name>Įvedimo operacija</name>
+            <uid>$write</uid>
+        </lexem>
+        <lexem>
+            <value>ВЫВОД</value>
+            <name>Funkcijos rezultatas</name>
+            <uid>$return</uid>
+        </lexem>
+        <lexem>
+            <value>ЛОЖНО</value>
+            <name>Ne loginė konstanta</name>
+            <uid>$false</uid>
+        </lexem>
+        <lexem>
+            <value>ВЕРНО</value>
+            <name>Taip loginė kosntanta</name>
+            <uid>$true</uid>
+        </lexem>
+        <lexem>
+            <value>ЦЕЛОЕ</value>
+            <name>Sveikojo skaičiaus tipas</name>
+            <uid>$Integer_Type</uid>
+        </lexem>
+        <lexem>
+            <value>ДЕСЯТИЧНОЕ</value>
+            <name>Dešimtainio skaičiaus tipas</name>
+            <uid>$Decimal_Type</uid>
+        </lexem>
+        <lexem>
+            <value>ЛОГИЧЕСКОЕ</value>
+            <name>Loginis tipas</name>
+            <uid>$Bool_Type</uid>
+        </lexem>
+        <lexem>
+            <value>СИМВОЛ</value>
+            <name>Simbolinis tipas</name>
+            <uid>$Symbol_Type</uid>
+        </lexem>
+        <lexem>
+            <value>СТРОКА</value>
+            <name>Eilutės tipas</name>
+            <uid>$String_Type</uid>
+        </lexem>
+        <lexem>
+            <value>ЕСЛИ</value>
+            <name>Sąlyginis sakinys</name>
+            <uid>$if</uid>
+        </lexem>
+        <lexem>
+            <value>ПОКА</value>
+            <name>Sąliginis ciklo sakinys</name>
+            <uid>$while</uid>
+        </lexem>
+        <lexem>
+            <value>ИНАЧЕ</value>
+            <name>Alternatyvos sakinys</name>
+            <uid>$else</uid>
+        </lexem>
+		<lexem>
+            <value>ДОЛЯ</value>
+            <name>Eilutės dalis</name>
+            <uid>$substring</uid>
+        </lexem>
+        <lexem>
+            <value>В_СТРОКУ</value>
+            <name>Eilutės konvertavimas</name>
+            <uid>$to_string</uid>
+        </lexem>
+    </keywords>
+    <continuous>
+        <lexem>
+            <value>"</value>
+            <name>Eilutės konstanta</name>
+            <uid>$string</uid>
+        </lexem>
+        <lexem>
+            <value>#</value>
+            <name>Komentaro konstanta</name>
+            <uid>$comment</uid>
+        </lexem>
+		<lexem toLineEnd="true">
+			<value>@</value>
+			<name>Vienos eilutės komentaro konstanta</name>
+			<uid>$line_comment</uid>
+		</lexem>
+        <lexem singleCharacter="true">
+        	<value>'</value>
+        	<name>Simboliaus konstanta</name>
+        	<uid>$char</uid>
+        </lexem>
+    </continuous>
+</language>

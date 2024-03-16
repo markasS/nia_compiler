@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BNF>
+	<program root="true" error="File is not a NIA(tm) program:">
+		<alternative>
+			<repeat>
+				<function/>
+			</repeat>
+			<main/>
+			<repeat>
+				<function/>
+			</repeat>
+		</alternative>
+	</program>
+	<main error="Main function not valid:">
+		<alternative>
+			<lexem value="$lBrace"/>
+			<func_body/>
+			<lexem value="$rBrace"/>
+		</alternative>
+	</main>
+    <plus_or_minus>
+        <alternative>
+            <lexem value="$plus"/>
+            <term />
+        </alternative>
+        <alternative>
+            <lexem value="$minus"/>
+            <term />
+        </alternative>
+    </plus_or_minus>
+	<numExpr error="Invalid numeric expression:">
+		<alternative>
+			<term />
+            <plus_or_minus/>
+			<repeat>
+                <plus_or_minus/>
+			</repeat>
+		</alternative>
+	</numExpr>
+	<condition error="Invalid condition statement:">
+		<alternative>
+			<if/>
+			<repeat>
+				<else/>
+			</repeat>
+		</alternative>
+	</condition>
+	<term error="Incorrect term format: ">
+		<alternative>
+			<value_par/>
+			<repeat>
+				<lexem value="$asterisk"/>
+				<value_par/>
+			</repeat>
+		</alternative>
+	</term>
+    <value_par error="Value not function call/variable/constant: ">
+        <alternative>
+            <func_call/>
+        </alternative>
+        <alternative>
+            <lexem value="$lPar"/>
+            <func_call/>
+            <lexem value="$rPar"/>
+        </alternative>
+        <alternative>
+            <lexem value="$lPar"/>
+            <lexem value="$minus"/>
+            <func_call/>
+            <lexem value="$rPar"/>
+        </alternative>
+        <alternative>
+            <constant/>
+        </alternative>
+		<alternative>
+            <lexem value="$lPar"/>
+			<constant/>
+			<lexem value="$rPar"/>
+        </alternative>
+		<alternative>
+            <lexem value="$lPar"/>
+			<lexem value="$minus"/>
+			<constant/>
+			<lexem value="$rPar"/>
+        </alternative>
+
+        <alternative>
+            <lexem value="$id"/>
+        </alternative>
+		<alternative>
+			<lexem value="$lPar"/>
+			<lexem value="$id"/>
+			<lexem value="$rPar"/>
+        </alternative>
+		<alternative>
+			<lexem value="$lPar"/>
+			<lexem value="$minus"/>
+			<lexem value="$id"/>
+			<lexem value="$rPar"/>
+        </alternative>
+		<alternative>
+            <lexem value="$lPar"/>
+			<value/>
+			<lexem value="$rPar"/>
+        </alternative>
+		<alternative>
+            <lexem value="$lPar"/>
+			<lexem value="$minus"/>
+			<value/>
+			<lexem value="$rPar"/>
+        </alternative>
+    </value_par>
+	<value error="Value not function call/name/number: ">
+        <alternative>
+            <func_call/>
+        </alternative>
+        <alternative>
+            <numExpr/>
+        </alternative>
+        <alternative>
+            <term/>
+        </alternative>
+		<alternative>
+			<expression/>
+        </alternative>
+        <alternative>
+            <constant/>
+        </alternative>
+
+        <alternative>
+            <lexem value="$id"/>
+        </alternative>
+	</value>
+	<constant error="Not valid NIA(tm) constant" >
+		<alternative>
+			<logical_constant/>
+		</alternative>
+		<alternative>
+			<lexem value="$number"/>
+		</alternative>
+		<alternative>
+			<lexem value="$char" />
+		</alternative>
+		<alternative>
+			<lexem value="$string" />
+		</alternative>
+	</constant>
+	<logical_constant error="Not a valid NIA(tm) logical constant: ">
+		<alternative>
+			<lexem value="$true"/>
+		</alternative>
+		<alternative>
+			<lexem value="$false"/>
+		</alternative>
+	</logical_constant>
+	<if error="Illegal condition: ">
+		<alternative>
+			<lexem value="$if"/>
+			<lexem value="$lPar" />
+			<expression/>
+			<lexem value="$rPar" />
+			<lexem value="$lBrace"/>
+			<repeat>
+				<statement/>
+			</repeat>
+			<lexem value="$rBrace"/>
+		</alternative>
+	</if>
+	<else error="error in condition alternative: ">
+        <alternative>
+            <lexem value="$else" />
+            <if />
+        </alternative>
+        <alternative>
+            <lexem value="$else"/>
+            <lexem value="$lBrace"/>
+            <repeat>
+                <statement/>
+            </repeat>
+            <lexem value="$rBrace"/>
+        </alternative>
+	</else>
+    <conj_or_disj>
+        <alternative>
+            <lexem value="$dAmp"/>
+            <value_or_not />
+        </alternative>
+        <alternative>
+            <lexem value="$dPipe"/>
+            <value_or_not />
+        </alternative>
+    </conj_or_disj>
+	<expression error="Error in logical expression: ">
+        <alternative>
+            <value_par/>
+            <conj_or_disj />
+            <repeat>
+                <conj_or_disj/>
+            </repeat>
+        </alternative>
+        <alternative>
+            <value_par/>
+            <conj_or_disj />
+            <repeat>
+                <conj_or_disj/>
+            </repeat>
+        </alternative>
+		<alternative>
+            <value_or_not />
+            <repeat>
+                <conj_or_disj/>
+            </repeat>
+        </alternative>
+        <alternative>
+            <value_or_not />
+            <repeat>
+                <conj_or_disj/>
+            </repeat>
+        </alternative>
+	</expression>
+	<value_or_not error="Problem in value negation: ">
+		<alternative>
+			<value_par/>
+			<comparison/>
+            <value_par/>
+		</alternative>
+        <alternative>
+            <lexem value="$lPar" />
+            <value_par/>
+            <comparison/>
+            <value_par/>
+            <lexem value="$rPar" />
+        </alternative>
+		<alternative>
+			<lexem value="$exclMark"/>
+            <value_par/>
+		</alternative>
+        <alternative>
+            <value_par/>
+        </alternative>
+	</value_or_not>
+	<comparison error="Invalid use of comparison operator: ">
+		<alternative>
+			<lexem value="$greaterThan"/>
+		</alternative>
+		<alternative>
+			<lexem value="$greaterThanOrEq"/>
+		</alternative>
+		<alternative>
+			<lexem value="$lessThan"/>
+		</alternative>
+		<alternative>
+			<lexem value="$lessThanOrEq"/>
+		</alternative>
+		<alternative>
+			<lexem value="$dEq"/>
+		</alternative>
+		<alternative>
+			<lexem value="$exclEq"/>
+		</alternative>
+	</comparison>
+	<statement error="Not valid NIA(tm) statement: ">
+		<alternative>
+			<declaration />
+			<lexem value="$semicolon"/>
+		</alternative>
+		<alternative>
+			<initialization />
+			<lexem value="$semicolon"/>
+		</alternative>
+		<alternative>
+			<func_call />
+			<lexem value="$semicolon"/>
+		</alternative>
+		<alternative>
+			<control_statement/>
+            <repeat once="true">
+                <lexem value="$semicolon"/>
+            </repeat>
+		</alternative>
+		<alternative>
+			<assignment/>
+			<lexem value="$semicolon"/>
+		</alternative>
+		<alternative>
+			<return/>
+			<lexem value="$semicolon"/>
+		</alternative>
+	</statement>
+	<declaration error="Invalid variable declaration: ">
+		<alternative>
+			<type />
+			<lexem value="$id"/>
+		</alternative>
+	</declaration>
+	<initialization error="Invalid variable initialization: ">
+		<alternative>
+			<declaration/>
+			<lexem value="$assign"/>
+			<value />
+		</alternative>
+	</initialization>
+	<type error="Not a valid NIA(tm) type: ">
+		<alterntaive>
+			<lexem value="$Integer_Type" />
+		</alterntaive>
+		<alterntaive>
+			<lexem value="$Decimal_Type" />
+		</alterntaive>
+		<alterntaive>
+			<lexem value="$Bool_Type" />
+		</alterntaive>
+		<alterntaive>
+			<lexem value="$String_Type" />
+		</alterntaive>
+		<alterntaive>
+			<lexem value="$Symbol_Type" />
+		</alterntaive>
+	</type>
+	<func_call error="Invalid NIA(tm) function call: ">
+		<alternative>
+			<lexem value="$substring"/>
+			<lexem value="$lPar"/>
+			<repeat once="true">
+				<param_list />
+			</repeat>
+			<lexem value="$rPar"/>
+		</alternative>
+        <alternative>
+            <lexem value="$to_string"/>
+            <lexem value="$lPar"/>
+            <repeat once="true">
+                <param_list />
+            </repeat>
+            <lexem value="$rPar"/>
+        </alternative>
+		<alternative>
+			<lexem value="$id"/>
+			<lexem value="$lPar"/>
+			<repeat once="true">
+				<param_list />
+			</repeat>
+			<lexem value="$rPar"/>
+		</alternative>
+		<alternative>
+			<lexem value="$read"/>
+			<lexem value="$lPar"/>
+			<repeat once="true">
+				<param_list />
+			</repeat>
+			<lexem value="$rPar"/>
+		</alternative>
+		<alternative>
+			<lexem value="$write"/>
+			<lexem value="$lPar"/>
+			<repeat once="true">
+				<param_list />
+			</repeat>
+			<lexem value="$rPar"/>
+		</alternative>
+	</func_call>
+	<param_list error="Incorrect parameter list: ">
+		<alternative>
+			<value/>
+			<repeat>
+				<lexem value="$comma"/>
+				<value/>
+			</repeat>
+		</alternative>
+	</param_list>
+	<control_statement error="Error in condition or loop: ">
+		<alternative>
+			<condition/>
+		</alternative>
+		<alternative>
+			<loop/>
+		</alternative>
+	</control_statement>
+	<loop error="Invalid while loop: ">
+		<alternative>
+			<lexem value="$while"/>
+			<lexem value="$lPar"/>
+			<expression/>
+			<lexem value="$rPar"/>
+			<lexem value="$lBrace"/>
+			<repeat>
+				<statement/>
+			</repeat>
+			<lexem value="$rBrace"/>
+		</alternative>
+	</loop>
+	<func_body error="Error in function body structure: ">
+		<alternative>
+			<repeat>
+				<statement />
+			</repeat>
+		</alternative>
+	</func_body>
+	<func_head error="Error in function header: ">
+		<alternative>
+			<type/>
+			<lexem value="$id"/>
+			<lexem value="$lPar"/>
+			<repeat once="true">
+				<typed_param_list/>
+			</repeat>
+			<lexem value="$rPar"/>
+		</alternative>
+	</func_head>
+	<typed_param_list error="Error in function head params list:">
+		<alternative>
+			<declaration/>
+			<repeat>
+				<lexem value="$comma"/>
+				<declaration/>
+			</repeat>
+		</alternative>
+	</typed_param_list>
+	<function error="Error in function: ">
+		<alternative>
+			<func_head/>
+			<lexem value="$lBrace"/>
+			<repeat once="true">
+				<func_body/>
+			</repeat>
+			<lexem value="$rBrace"/>
+		</alternative>
+	</function>
+	<return error="Not a valid NIA(tm) return statement: ">
+		<alternative>
+			<lexem value="$return"/>
+			<value/>
+		</alternative>
+	</return>
+	<assignment error="Error in assignment: ">
+		<alternative>
+			<lexem value="$id"/>
+			<lexem value="$assign"/>
+			<value/>
+		</alternative>
+	</assignment>
+</BNF>
